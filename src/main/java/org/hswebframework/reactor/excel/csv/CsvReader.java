@@ -58,7 +58,7 @@ public class CsvReader implements ExcelReader {
         return Flux.create(sink -> {
 
             InputStream buffered = transformInputStream(inputStream);
-            try (CSVParser parser = CSVFormat.EXCEL.parse(new InputStreamReader(
+            try (CSVParser parser = CSVFormat.EXCEL.withQuote(null).parse(new InputStreamReader(
                     buffered,
                     detectCharset(buffered, options)))) {
 
